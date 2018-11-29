@@ -1,0 +1,27 @@
+<launch>
+<!-- usb_cam -->
+	<node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+		<param name="video_device" value="/dev/video1" />
+		<param name="image_width" value="640" />
+		<param name="image_height" value="480" />
+		<param name="pixel_format" value="yuyv" />
+		<param name="camera_frame_id" value="usb_cam" />
+		<param name="io_method" value="mmap"/>
+		<param name="framerate" value="30"/>
+	</node>
+
+<!-- platform_control-->
+    <!--<node pkg="platform_control" type="write_serial" name="write_serial" />-->
+	<node pkg="serial_example" type="serial_read_and_write_node" name="serial_read_and_write_node"/>
+
+<!-- lane_detector-->
+	<node pkg="lane_detector" type="lane_detector" name="lane_detector" output="screen">
+		<!-- scale platform -->
+		<param name="throttle" value="1400" />
+		<param name="angle_factor" type="double" value="8" />
+		<param name="stop_count" value="100" />
+		<param name="steer_height" value="70" />
+		<!--remap from="/lane_detector/ackermann" to="ackermann" /-->
+	</node>
+
+</launch>
