@@ -106,7 +106,7 @@ class LaneDetectorNode
 		int frame_count = 0;
 		int j = 0;
 		double angle = 0;
-		int MAX_STEER = 400;
+		int MAX_STEER = 260;
 		int STEER_ZERO = 1450;
 
 };
